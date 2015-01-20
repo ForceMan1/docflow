@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<ui:composition template="/templates/bankTemplate.xtml">
+		<ui:define name="title">Добавление нового банка</ui:define>
+		<ui:define name="content">
+			<h:form>
+				<h:panelGrid columns="2">
+					<h:outpulLabel value="Наименование"/>
+					<h:inputText value="${manager.bank.name}"/>
+					<h:outputLabel value="БИК"/>
+					<h:inputText value="${manager.bank.bik}"/>
+					<h:outputLabel value="ОКПО"/>
+					<h:commandButton value="Создать" action="${manager.createBank}"/>
+				</h:panelGrid>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+	
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<ui:composition template="/templates/docTypeTemplate.xtml">
+		<ui:define name="title">Создание типа документа</ui:define>
+		<ui:define name="content">
+			<h:form>
+				<h:panelGrid columns="2">
+					<h:outpulLabel value="Наименование"></h:outpulLabel>
+					<h:inputText value="${manager.docType.name}"></h:inputText>
+					<h:outputLabel>Дополнительно</h:outputLabel>
+					<h:inputTextArea rows="3" value="${manager.docType.info}"></h:inputTextArea>
+					<h:>Родитель:</h:>
+					<h:commandButton value="Создать" action="${manager.createDocType}"></h:commandButton>
+					
+				</h:panelGrid>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+	
+</html>
