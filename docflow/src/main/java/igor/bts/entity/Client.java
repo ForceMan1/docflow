@@ -265,6 +265,7 @@ public class Client {
 		this.kor_schet = kor_schet;
 	}
 
+	//@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="client")
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="client")
 	@XmlElement(name = "dogovor")
 	public List<Dogovor> getDogovors() {

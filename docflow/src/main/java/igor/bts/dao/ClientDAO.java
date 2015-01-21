@@ -22,16 +22,16 @@ public class ClientDAO implements IClientDAO<Client> {
 	
 	@Override
 	public Client create(Client client) {
-		Bank bank = null;
-		if(client.getBank() != null && client.getBank().getId() != null)
-			bank = em.find(Bank.class, client.getBank().getId());
-			//em.merge(bank);
-		Manager manager = null;
-		if(client.getManager() != null && client.getManager().getId() != null)
-			manager = em.find(Manager.class, client.getManager().getId());
-			//em.merge(manager);
-		client.setBank(bank);
-		client.setManager(manager);
+		//Bank bank = null;
+		//if(client.getBank() != null && client.getBank().getId() != null)
+		//	bank = em.find(Bank.class, client.getBank().getId());
+		//em.merge(bank);
+		//Manager manager = null;
+		//if(client.getManager() != null && client.getManager().getId() != null)
+		//	manager = em.find(Manager.class, client.getManager().getId());
+		//em.merge(manager);
+		//client.setBank(bank);
+		//client.setManager(manager);
 		em.persist(client);
 		return client;
 	}
