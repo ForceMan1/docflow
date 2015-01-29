@@ -106,7 +106,7 @@ public class Client {
 		this.fullname = fullname;
 	}
 
-	@NotNull @Size(max = 255)
+	@Size(max = 255) @NotNull
 	@Column(nullable = false, length = 255)
 	@XmlAttribute
 	public String getUrid_address() {
@@ -117,7 +117,7 @@ public class Client {
 		this.urid_address = urid_address;
 	}
 
-	@NotNull @Size(max = 255)
+	@Size(max = 255) @NotNull
 	@Column(nullable = false, length = 255)
 	@XmlAttribute
 	public String getPocht_address() {
@@ -223,7 +223,7 @@ public class Client {
 	}
 
 	
-	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
+	@OneToOne(fetch = FetchType.LAZY)
 	@XmlElement
 	public Manager getManager() {
 		return manager;
@@ -266,7 +266,7 @@ public class Client {
 	}
 
 	//@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="client")
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="client")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="client")
 	@XmlElement(name = "dogovor")
 	public List<Dogovor> getDogovors() {
 		return dogovors;
@@ -281,10 +281,12 @@ public class Client {
 	public boolean equals(Object o){
 		if(o instanceof Client){
 			Client client = (Client)o;
-			if(client.getInn() != inn 
-					|| client.getPodpisant().getPass_nomer() != podpisant.getPass_nomer()
-					|| client.getPodpisant().getPass_seria() != podpisant.getPass_seria())
+			if(client.getInn() != inn)
 				return false;
+			if(client.getPodpisant() != null)
+				if(client.getPodpisant().getPass_nomer().equals(podpisant.getPass_nomer())
+					|| client.getPodpisant().getPass_seria().equals(podpisant.getPass_seria()))
+					return false;
 			return true;
 		}else
 			return false;

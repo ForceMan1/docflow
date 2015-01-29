@@ -3,6 +3,8 @@ package igor.bts.facade;
 import java.util.List;
 
 
+
+
 import igor.bts.dao.BankDAO;
 import igor.bts.dao.IBankDAO;
 import igor.bts.dao.IDocTypeDAO;
@@ -18,6 +20,8 @@ import igor.bts.entity.TpInternet;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 
 @Stateless

@@ -16,6 +16,8 @@ import igor.bts.jaxb.TpInternetList;
 import igor.bts.entity.DocType;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
+import javax.transaction.Transactional.TxType;
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;

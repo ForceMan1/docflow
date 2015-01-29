@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Set;
 
 import igor.bts.Podpisant;
 import igor.bts.dao.BZDAO;
@@ -31,6 +32,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -40,6 +45,8 @@ public class JPATest {
 	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("test1");
 	private static EntityManager em;
 	private static EntityTransaction tx;
+	private static ValidatorFactory vf = Validation.buildDefaultValidatorFactory();
+	private static Validator validator;
 	
 	@BeforeClass
 	public static void initEntityManager() throws Exception {
@@ -47,10 +54,20 @@ public class JPATest {
 		tx = em.getTransaction();
 	}
 	
+	@BeforeClass
+	public static void createValidator(){
+		validator = vf.getValidator();
+	}
+	
 	@AfterClass
 	public static void closeEntityManager(){
 		em.close();
 		emf.close();
+	}
+	
+	@AfterClass
+	public static void closeValidator(){
+		vf.close();
 	}
 
 	@Test
@@ -265,8 +282,10 @@ public class JPATest {
 		tx.commit();
 		
 		Client client = new Client("Конин, ИП", "ИП Конин", "450022, г.Уфа", "450000, ул.Ленина, 28",
-				true, "1234567890", "1234567890", "okpo", podpisant, "2299499", 
+				true, "123456789011", "1234567890", "okpo", podpisant, "2299499", 
 				false, "", "", manager, bank, null, null, null);
+		Set<ConstraintViolation<Client>> violations = validator.validate(client);
+		assertEquals(violations.size(), 0);
 		tx.begin();
 		client = clientDAO.create(client);
 		tx.commit();

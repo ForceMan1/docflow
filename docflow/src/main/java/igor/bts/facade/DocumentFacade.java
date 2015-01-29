@@ -30,12 +30,13 @@ import igor.bts.entity.Manager;
 import igor.bts.entity.Service;
 import igor.bts.entity.TpInternet;
 
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-@Named("document")
+@Stateless
 public class DocumentFacade {
 	@Inject
 	private IClientDAO<Client> clientDAO; 
