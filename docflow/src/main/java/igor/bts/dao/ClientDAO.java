@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
@@ -22,17 +23,24 @@ public class ClientDAO implements IClientDAO<Client> {
 	
 	@Override
 	public Client create(Client client) {
-		//Bank bank = null;
-		//if(client.getBank() != null && client.getBank().getId() != null)
-		//	bank = em.find(Bank.class, client.getBank().getId());
-		//em.merge(bank);
-		//Manager manager = null;
-		//if(client.getManager() != null && client.getManager().getId() != null)
-		//	manager = em.find(Manager.class, client.getManager().getId());
-		//em.merge(manager);
-		//client.setBank(bank);
-		//client.setManager(manager);
+		Bank bank = client.getBank();
+		if(client.getBank() != null){
+			if(client.getBank().getId() != null)
+				bank = em.merge(bank);
+			else 
+				em.persist(bank);
+		}
+		Manager manager = client.getManager();
+		if(client.getManager() != null){
+			if(client.getManager().getId() != null)
+				manager = em.merge(manager);
+			else
+				em.persist(manager);
+		}
+		client.setBank(bank);
+		client.setManager(manager);
 		em.persist(client);
+		em.flush();
 		return client;
 	}
 
