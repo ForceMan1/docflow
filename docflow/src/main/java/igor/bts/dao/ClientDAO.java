@@ -48,11 +48,13 @@ public class ClientDAO implements IClientDAO<Client> {
 	public void delete(Integer id) {
 		Client client = em.find(Client.class, id);
 		em.remove(client);
+		em.flush();
 	}
 
 	@Override
 	public void update(Client client) {
 		em.merge(client);
+		em.flush();
 	}
 
 	@Override

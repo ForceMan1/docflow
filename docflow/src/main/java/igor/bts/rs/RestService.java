@@ -111,7 +111,7 @@ public class RestService {
 	@Path("client/{id}")
 	@GET
 	@Produces(MediaType.APPLICATION_XML)
-	public Response getDocType(@PathParam("id") String sid){
+	public Response getClient(@PathParam("id") String sid){
 		Integer id;
 		try {
 			id = Integer.valueOf(sid);

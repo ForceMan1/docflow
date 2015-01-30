@@ -230,7 +230,7 @@ public class DocumentFacade {
 	}
 	
 	/* Client */
-	public Client createClient(Client Client){
+	public Client createClient(Client client){
 		return clientDAO.create(client);
 	}
 	
