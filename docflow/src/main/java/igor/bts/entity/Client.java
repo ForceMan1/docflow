@@ -84,7 +84,7 @@ public class Client {
 		this.id = id;
 	}
 
-	//@Size(max = 120) //@NotNull 
+	@Size(max = 120) @NotNull 
 	@Column(nullable = false, length = 120)
 	@XmlAttribute
 	public String getSmallname() {
@@ -95,7 +95,7 @@ public class Client {
 		this.smallname = smallname;
 	}
 
-	//@Size(max = 255) //@NotNull
+	@Size(max = 255) @NotNull
 	@Column(nullable = false, length = 255)
 	@XmlAttribute
 	public String getFullname() {
@@ -106,7 +106,7 @@ public class Client {
 		this.fullname = fullname;
 	}
 
-	//@Size(max = 255) //@NotNull
+	@Size(max = 255) @NotNull
 	@Column(nullable = false, length = 255)
 	@XmlAttribute
 	public String getUrid_address() {
@@ -117,7 +117,7 @@ public class Client {
 		this.urid_address = urid_address;
 	}
 
-	//@Size(max = 255) //@NotNull
+	@Size(max = 255) @NotNull
 	@Column(nullable = false, length = 255)
 	@XmlAttribute
 	public String getPocht_address() {
@@ -128,7 +128,7 @@ public class Client {
 		this.pocht_address = pocht_address;
 	}
 	
-	//@NotNull
+	@NotNull
 	@Column(nullable = false)
 	@XmlAttribute
 	public Boolean getIs_phys() {
@@ -139,7 +139,7 @@ public class Client {
 		this.is_phys = is_phys;
 	}
 
-	//@Size(min=10, max = 12)
+	@Size(min=10, max = 12)
 	@Column(length = 12)
 	@XmlAttribute
 	public String getInn() {
@@ -150,7 +150,7 @@ public class Client {
 		this.inn = inn;
 	}
 
-	//@Pattern(regexp="\\d{10}")
+	@Pattern(regexp="\\d{10}")
 	@Column(length=10)
 	@XmlAttribute
 	public String getKpp() {
@@ -180,7 +180,7 @@ public class Client {
 		this.podpisant = podpisant;
 	}
 
-	//@Size(max = 90)
+	@Size(max = 90)
 	@Column(length = 90)
 	@XmlAttribute
 	public String getPhone() {
@@ -200,7 +200,7 @@ public class Client {
 		this.is_delivery = is_delivery;
 	}
 
-	//@Size(max = 10)
+	@Size(max = 10)
 	@Column(length = 10)
 	@XmlAttribute
 	public String getDelivery_index() {
@@ -211,7 +211,7 @@ public class Client {
 		this.delivery_index = delivery_index;
 	}
 
-	//@Size(max = 255)
+	@Size(max = 255)
 	@Column(length = 255)
 	@XmlAttribute
 	public String getDelivery_address() {
@@ -243,7 +243,7 @@ public class Client {
 		this.bank = bank;
 	}
 
-	//@Pattern(regexp = "\\d{20}")
+	@Pattern(regexp = "\\d{20}")
 	@Column(length = 20)
 	@XmlAttribute
 	public String getRas_schet() {
@@ -254,7 +254,7 @@ public class Client {
 		this.ras_schet = ras_schet;
 	}
 
-	//@Pattern(regexp = "\\d{20}")
+	@Pattern(regexp = "\\d{20}")
 	@Column(length = 20)
 	@XmlAttribute
 	public String getKor_schet() {

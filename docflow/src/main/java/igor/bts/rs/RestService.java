@@ -222,10 +222,17 @@ public class RestService {
 		return Response.created(uri).build();
 	}
 	
-	@Path("dogovor")
+	@Path("dogovor/{id}")
 	@DELETE
 	@Consumes(MediaType.APPLICATION_XML)
-	public Response deleteDogovor(Dogovor dogovor){
+	public Response deleteDogovor(@PathParam("id") String sid){
+		Integer id;
+		try {
+			id = Integer.valueOf(sid);
+		}catch(NumberFormatException exc){
+			throw new BadRequestException();
+		}
+		Dogovor dogovor = facade.getDogovor(id);
 		if(dogovor == null || dogovor.getId() == null)
 			throw new BadRequestException();
 		facade.deleteDogovor(dogovor.getId());
@@ -262,7 +269,7 @@ public class RestService {
 	
 	@Path("bz")
 	@GET
-	@Produces
+	@Produces(MediaType.APPLICATION_XML)
 	public Response getAllBZ(){
 		List<BZ> bzs = facade.getAllBZ();
 		if(bzs == null || bzs.size() == 0)
@@ -285,10 +292,16 @@ public class RestService {
 	    return Response.created(uri).build();
 	}
 	
-	@Path("bz")
+	@Path("bz/{id}")
 	@DELETE
-	@Consumes(MediaType.APPLICATION_XML)
-	public Response deleteBZ(BZ bz){
+	public Response deleteBZ(@PathParam("id") String sid){
+		Integer id;
+		try{
+			id = Integer.valueOf(sid);
+		}catch(NumberFormatException exc){
+			throw new BadRequestException();
+		}
+		BZ bz = facade.getBZ(id);
 		if(bz == null || bz.getId() == null )
 			throw new BadRequestException();
 		bz = facade.getBZ(bz.getId());
@@ -341,7 +354,7 @@ public class RestService {
 	@POST
 	@Consumes(MediaType.APPLICATION_XML)
 	public Response createService(Service service){
-		if(service == null || service.getId() == null)
+		if(service == null)
 			throw new BadRequestException();
 		service = facade.createService(service);
 		if(service == null || service.getId() == null)
@@ -350,10 +363,16 @@ public class RestService {
 		return Response.created(uri).build();
 	}
 	
-	@Path("service")
+	@Path("service/{id}")
 	@DELETE
-	@Consumes(MediaType.APPLICATION_XML)
-	public Response deleteService(Service service){
+	public Response deleteService(@PathParam("id") String sid){
+		Integer id;
+		try{
+			id = Integer.valueOf(sid);
+		}catch(NumberFormatException exc){
+			throw new BadRequestException();
+		}
+		Service service = facade.getService(id);
 		if(service == null ||service.getId() == null )
 			throw new BadRequestException();
 		facade.deleteService(service.getId());
