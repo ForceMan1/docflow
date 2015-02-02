@@ -1,8 +1,12 @@
 package igor.bts.dao;
 
 import igor.bts.entity.BZ;
+import igor.bts.entity.DocType;
+import igor.bts.entity.Dogovor;
 
 import java.util.List;
+
+
 
 
 
@@ -22,7 +26,19 @@ public class BZDAO implements IBZDAO<BZ> {
 	
 	@Override
 	public BZ create(BZ bz) {
+		DocType docType = bz.getType();
+		if(docType != null)
+			if(docType.getId() != null)
+				em.merge(docType);
+			else
+				em.persist(docType);
 		em.persist(bz);
+		Dogovor dogovor = bz.getDogovor();
+		if(dogovor != null)
+			if(dogovor.getId() != null)
+				em.merge(dogovor);
+			else
+				em.persist(dogovor);
 		return bz;
 		
 	}

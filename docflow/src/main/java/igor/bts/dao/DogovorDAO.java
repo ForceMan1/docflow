@@ -1,5 +1,7 @@
 package igor.bts.dao;
 
+import igor.bts.entity.Client;
+import igor.bts.entity.DocType;
 import igor.bts.entity.Dogovor;
 
 import java.util.List;
@@ -21,6 +23,20 @@ public class DogovorDAO implements IDogovorDAO<Dogovor> {
 	
 	@Override
 	public Dogovor create(Dogovor dogovor) {
+		DocType docType = dogovor.getType();
+		if(docType != null)
+			if(docType.getId() != null)
+				em.merge(docType);
+			else
+				em.persist(docType);
+		Client client = dogovor.getClient();
+		if(client != null)
+			if(client.getId() != null)
+				if(client.getId() != null)
+					em.merge(client);
+				else
+					em.persist(client);
+		
 		em.persist(dogovor);
 		return dogovor;
 	}
