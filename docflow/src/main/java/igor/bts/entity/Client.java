@@ -223,7 +223,7 @@ public class Client {
 	}
 
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
 	@XmlElement
 	public Manager getManager() {
 		return manager;
@@ -233,7 +233,7 @@ public class Client {
 		this.manager = manager;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
 	@XmlElement
 	public Bank getBank() {
 		return bank;
@@ -265,8 +265,7 @@ public class Client {
 		this.kor_schet = kor_schet;
 	}
 
-	//@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="client")
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="client")
+	@OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, mappedBy="client")
 	@XmlElement(name = "dogovor")
 	public List<Dogovor> getDogovors() {
 		return dogovors;

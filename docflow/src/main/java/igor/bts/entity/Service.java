@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -71,7 +72,7 @@ public class Service {
 	}
 	
 	@NotNull
-	@OneToOne(optional = false)
+	@OneToOne(cascade = CascadeType.MERGE, optional = false)
 	@JoinColumn(nullable=false)
 	public DocType getType() {
 		return type;
@@ -90,7 +91,7 @@ public class Service {
 	}
 	
 	@NotNull
-	@OneToOne(optional = false)
+	@OneToOne(cascade = CascadeType.MERGE, optional = false)
 	@JoinColumn(nullable=false)
 	public EdIzm getEdIzm() {
 		return edIzm;
@@ -126,7 +127,7 @@ public class Service {
 		this.stoimost = stoimost;
 	}
 	
-	@OneToOne(optional=true)
+	@OneToOne(cascade = CascadeType.MERGE, optional=true)
 	@JoinColumn(name="tp_jfk", nullable=true)
 	public TpInternet getTpInternet() {
 		return tpInternet;
@@ -153,7 +154,7 @@ public class Service {
 		this.ids_billing = ids_billing;
 	}
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name="bz_jfk")
 	public BZ getBz() {
 		return bz;

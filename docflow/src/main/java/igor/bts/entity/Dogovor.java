@@ -70,7 +70,7 @@ public class Dogovor {
 	}
 	
 	@NotNull
-	@OneToOne(optional=false)
+	@OneToOne(cascade=CascadeType.MERGE, optional=false)
 	@JoinColumn(nullable = false)
 	public DocType getType() {
 		return type;
@@ -131,7 +131,7 @@ public class Dogovor {
 		this.original_date = original_date;
 	}
 	
-	@ManyToOne(optional=false)
+	@ManyToOne(cascade = CascadeType.MERGE, optional=false)
 	@JoinColumn(name="client_jfk", nullable=false)
 	public Client getClient() {
 		return client;
@@ -140,7 +140,7 @@ public class Dogovor {
 		this.client = client;
 	}
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="dogovor")
+	@OneToMany(cascade=CascadeType.MERGE, mappedBy="dogovor")
 	public List<BZ> getBzs() {
 		return bzs;
 	}
