@@ -117,7 +117,7 @@ public class AdminRestService {
 	@Produces(MediaType.APPLICATION_XML)
 	public Response getAllDocType(){
 		DocTypeList docTypes = new DocTypeList();
-		docTypes.setDocType(facade.getAllDocType());
+		docTypes.setDocTypes(facade.getAllDocType());
 		if(docTypes == null || docTypes.getDocTypes().size() == 0)
 			throw new NotFoundException();
 		return Response.ok(docTypes).build();

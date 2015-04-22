@@ -18,6 +18,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+/** 
+ * 
+ * @author Igor
+ * Entity Type EdIzm. Using in Service Entity.
+ */
 @XmlRootElement(name="ed_izm")
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
@@ -25,6 +30,9 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "ed_izm")
 @NamedQuery(name=EdIzm.ALL_ED_IZM, query = "SELECT e from EdIzm e")
 public class EdIzm implements Serializable{
+	/**
+	 * String const for a Named Query.
+	 */
 	@XmlTransient
 	public static final String ALL_ED_IZM = "ALL_ED_IZM";
 	private Integer id;
@@ -39,29 +47,56 @@ public class EdIzm implements Serializable{
 	}
 	
 	/****** Getters & Setters **********/
+	/**
+	 * Get a primary key.
+	 * @return primary key.
+	 */
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	public Integer getId() {
 		return id;
 	}
+	
+	/**
+	 * Set a primary key.
+	 * @param id primary key
+	 */
 	public void setId(Integer id) {
 		this.id = id;
 	}
 	
+	/**
+	 * Get a name of this EdIzm entity.
+	 * @return name
+	 */
 	@NotNull
 	@Size(max = 100)
 	@Column(nullable = false, length = 100)
 	public String getName() {
 		return name;
 	}
+	
+	/**
+	 * Set a name of this EdIzm entity. Max size = 100. No nullable.
+	 * @param name name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 	
+	/**
+	 * Get an additional info.
+	 * @return additional info
+	 */
 	@Size(max = 128)
 	@Column(length = 128)
 	public String getInfo() {
 		return info;
 	}
+	
+	/**
+	 * Set an additional info. Max Size = 128.
+	 * @param info additional info
+	 */
 	public void setInfo(String info) {
 		this.info = info;
 	}

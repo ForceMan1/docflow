@@ -36,26 +36,59 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+/**
+ * 
+ * @author Igor
+ * Facade class for a managing entities using user privileges.
+ */
 @Stateless
 public class DocumentFacade {
+	/** 
+	 * DAO object for a managing {@link igor.bts.entity.Client} entities.
+	 */
 	@Inject
-	private IClientDAO<Client> clientDAO; 
+	//private IClientDAO<Client> clientDAO;
+	private IClientDAO clientDAO;
+	/** 
+	 * DAO object for a managing {@link igor.bts.entity.Dogovor} entities.
+	 */
 	@Inject
-	private IDogovorDAO<Dogovor> dogovorDAO;
+	private IDogovorDAO dogovorDAO;
+	/**
+	 * DAO object for a managing {@link igor.bts.entity.BZ} entities.
+	 */
 	@Inject
-	private IBZDAO<BZ> bzDAO;
+	private IBZDAO bzDAO;
+	/**
+	 * DAO object for a managing {@link igor.bts.entity.Service} entities.
+	 */
 	@Inject
-	private IServiceDAO<Service> serviceDAO;
+	private IServiceDAO serviceDAO;
+	/**
+	 * DAO object for a managing {@link igor.bts.entity.DocType} entities. 
+	 */
 	@Inject
-	private IDocTypeDAO<DocType> docTypeDAO;
+	private IDocTypeDAO docTypeDAO;
+	/**
+	 * DAO object for a managing {@link igor.bts.entity.EdIzm} entities.
+	 */
 	@Inject
-	private IEdIzmDAO<EdIzm> edIzmDAO;
+	private IEdIzmDAO edIzmDAO;
+	/**
+	 * DAO object for a managing {@link igor.bts.entity.Manager} entities.
+	 */
 	@Inject
-	private IManagerDAO<Manager> managerDAO;
+	private IManagerDAO managerDAO;
+	/** 
+	 * DAO object for a managing {@link igor.bts.entity.TpInternet} entities.
+	 */
 	@Inject
-	private ITpInternetDAO<TpInternet> tpInternetDAO;
+	private ITpInternetDAO tpInternetDAO;
+	/**
+	 * DAO object for a managing {@link igor.bts.entity.Bank} entities.
+	 */
 	@Inject
-	private IBankDAO<Bank> bankDAO;
+	private IBankDAO bankDAO;
 	
 	private Client client = new Client();
 	private Dogovor dogovor = new Dogovor();
@@ -68,54 +101,134 @@ public class DocumentFacade {
 	private TpInternet tpInternet = new TpInternet();
 	
 	/* Getters & Setters */
-	public IClientDAO<Client> getClientDAO() {
+	/**
+	 * Get {@link igor.bts.entity.Client} DAO object.
+	 * @return {@link igor.bts.entity.Client} DAO object
+	 */
+	public IClientDAO getClientDAO() {
 		return clientDAO;
 	}
-	public void setClientDAO(IClientDAO<Client> clientDAO) {
+	
+	/**
+	 * Set {@link igor.bts.entity.Client} DAO object
+	 * @param clientDAO {@link igor.bts.entity.Client} DAO objects
+	 */
+	public void setClientDAO(IClientDAO clientDAO) {
 		this.clientDAO = clientDAO;
 	}
-	public IDogovorDAO<Dogovor> getDogovorDAO() {
+	
+	/**
+	 * {@link igor.bts.entity.Dogovor} DAO object
+	 * @return {@link igor.bts.entity.Dogovor} DAO object
+	 */
+	public IDogovorDAO getDogovorDAO() {
 		return dogovorDAO;
 	}
-	public void setDogovorDAO(IDogovorDAO<Dogovor> dogovorDAO) {
+	
+	/**
+	 * Set {@link igor.bts.entity.Dogovor} DAO object
+	 * @param dogovorDAO {@link igor.bts.entity.Dogovor} DAO object
+	 */
+	public void setDogovorDAO(IDogovorDAO dogovorDAO) {
 		this.dogovorDAO = dogovorDAO;
 	}
-	public IBZDAO<BZ> getBzDAO() {
+	
+	/**
+	 * Get {@link igor.bts.entity.BZ} DAO object
+	 * @return {@link igor.bts.entity.BZ} DAO object
+	 */
+	public IBZDAO getBzDAO() {
 		return bzDAO;
 	}
-	public void setBzDAO(IBZDAO<BZ> bzDAO) {
+	
+	/**
+	 * Set {@link igor.bts.entity.BZ} DAO object
+	 * @param bzDAO {@link igor.bts.entity.BZ} DAO object
+	 */
+	public void setBzDAO(IBZDAO bzDAO) {
 		this.bzDAO = bzDAO;
 	}
-	public IServiceDAO<Service> getServiceDAO() {
+	
+	/**
+	 * Get {@link igor.bts.entity.Service} DAO object
+	 * @return {@link igor.bts.entity.Service} DAO object
+	 */
+	public IServiceDAO getServiceDAO() {
 		return serviceDAO;
 	}
-	public void setServiceDAO(IServiceDAO<Service> serviceDAO) {
+	
+	/**
+	 * Set {@link igor.bts.entity.Service} DAO object
+	 * @param serviceDAO {@link igor.bts.entity.Service} DAO object
+	 */
+	public void setServiceDAO(IServiceDAO serviceDAO) {
 		this.serviceDAO = serviceDAO;
 	}
-	public IDocTypeDAO<DocType> getDocTypeDAO() {
+	
+	/**
+	 * Get {@link igor.bts.entity.DocType} DAO object
+	 * @return {@link igor.bts.entity.DocType} DAO object
+	 */
+	public IDocTypeDAO getDocTypeDAO() {
 		return docTypeDAO;
 	}
-	public void setDocTypeDAO(IDocTypeDAO<DocType> docTypeDAO) {
+	
+	/**
+	 * Set {@link igor.bts.entity.DocType} DAO object
+	 * @param docTypeDAO {@link igor.bts.entity.DocType} DAO object
+	 */
+	public void setDocTypeDAO(IDocTypeDAO docTypeDAO) {
 		this.docTypeDAO = docTypeDAO;
 	}
-	public IEdIzmDAO<EdIzm> getEdIzmDAO() {
+	
+	/**
+	 * Get {@link igor.bts.entity.EdIzm} DAO object
+	 * @return {@link igor.bts.entity.EdIzm} DAO object
+	 */
+	public IEdIzmDAO getEdIzmDAO() {
 		return edIzmDAO;
 	}
-	public void setEdIzmDAO(IEdIzmDAO<EdIzm> edIzmDAO) {
+	
+	/**
+	 * Set {@link igor.bts.entity.EdIzm} DAO object
+	 * @param edIzmDAO {@link igor.bts.entity.EdIzm} DAO object
+	 */
+	public void setEdIzmDAO(IEdIzmDAO edIzmDAO) {
 		this.edIzmDAO = edIzmDAO;
 	}
-	public IManagerDAO<Manager> getManagerDAO() {
+	
+	/**
+	 * Get {@link igor.bts.entity.Manager} DAO object
+	 * @return {@link igor.bts.entity.Manager} DAO object
+	 */
+	public IManagerDAO getManagerDAO() {
 		return managerDAO;
 	}
-	public void setManagerDAO(IManagerDAO<Manager> managerDAO) {
+	
+	/**
+	 * Set {@link igor.bts.entity.Manager} DAO object
+	 * @param managerDAO {@link igor.bts.entity.Manager} DAO object
+	 */
+	public void setManagerDAO(IManagerDAO managerDAO) {
 		this.managerDAO = managerDAO;
 	}
-	public ITpInternetDAO<TpInternet> getTpInternetDAO() {
+	
+	/**
+	 * Get {@link igor.bts.entity.TpInternet} DAO object
+	 * @return {@link igor.bts.entity.TpInternet} DAO object
+	 */
+	public ITpInternetDAO getTpInternetDAO() {
 		return tpInternetDAO;
 	}
-	public void setTpInternetDAO(ITpInternetDAO<TpInternet> tpInternetDAO) {
+	
+	/**
+	 * Set {@link igor.bts.entity.TpInternet} DAO object
+	 * @param tpInternetDAO
+	 */
+	public void setTpInternetDAO(ITpInternetDAO tpInternetDAO) {
 		this.tpInternetDAO = tpInternetDAO;
 	}
+	
 	public Client getClient() {
 		return client;
 	}
@@ -173,143 +286,331 @@ public class DocumentFacade {
 	
 	/* Methods */
 	/* Bank */
+	/**
+	 * Create {@link igor.bts.entity.Bank} entity instance.
+	 * @param bank {@link igor.bts.entity.Bank} POJO object
+	 * @return created {@link igor.bts.entity.Bank} entity instance
+	 * @throws IllegalArgumentException
+	 * @throws CRUDEntityException 
+	 */
 	public Bank createBank(Bank bank){
 		return bankDAO.create(bank);
 	}
 	
+	/** 
+	 * Merge {@link igor.bts.entity.Bank} entity instance to database.
+	 * @param bank {@link igor.bts.entity.Bank} entity instance
+	 * @throws IllegalArgumentException
+	 * @throws CRUDEntityEception
+	 */
 	public void updateBank(Bank bank){
 		bankDAO.update(bank);
 	}
 	
-	public void deleteBank(Integer id){
-		bankDAO.delete(id);
+	
+	/** 
+	 * Remove {@link igor.bts.entity.Bank} entity instance by ID.
+	 * @param id ID of {@link igor.bts.entity.Bank} entity instance
+	 * @return true if the removing is successful
+	 * @throws CRUDEntityException
+	 */
+	public boolean deleteBank(Integer id){
+		return bankDAO.delete(id);
 	}
 	
+	/**
+	 * Get {@link igor.bts.entity.Bank} entity instance by ID.
+	 * @param id ID of {@link igor.bts.entity.Bank} entity instance 
+	 * @return {@link igor.bts.entity.Bank} entity instance or null if not exists
+	 */
 	public Bank getBank(Integer id){
 		return bankDAO.getById(id);
 	}
 	
+	/**
+	 * Get all {@link igor.bts.entity.Bank} entity instances.
+	 * @return List of all {@link igor.bts.entity.Bank} entity instances
+	 * @throws CRUDEntityException
+	 */
 	public List<Bank> getAllBank(){
 		return bankDAO.getAll();
 	}
 	
 	/* Manager */
+	/**
+	 * Get {@link igor.bts.entity.Manager} entity instances by ID.
+	 * @param id {@link igor.bts.entity.Manager} POJO object
+	 * @return {@link igor.bts.entity.Manager} entity instance
+	 * @throws IllegalArgumentException
+	 * @throws CRUDEntityException
+	 */
 	public Manager getManager(Integer id){
 		return managerDAO.getById(id);
 	}
 	
+	/**
+	 * Get of all {@link igor.bts.entity.Manager} entity instances.
+	 * @return List of {@link igor.bts.entity.Manager} entity instances 
+	 * @throws CRUDEntityException
+	 */
 	public List<Manager> getAllManager(){
 		return managerDAO.getAll();
 	}
 	
 	/* DocType */
+	/**
+	 * Get {@link igor.bts.entity.DocType} entity instance by ID.
+	 * @param id ID of {@link igor.bts.entity.DocType} entity instance
+	 * @return {@link igor.bts.entity.DocType} entity instance or null if not exists
+	 */
 	public DocType getDocType(Integer id){
 		return docTypeDAO.getById(id);
 	}
 	
+	/**
+	 * Get all of {@link igor.bts.entity.DocType} entity instances.
+	 * @return List of {@link igor.bts.entity.DocType} entity instances
+	 * @throws CRUDEntityException
+	 */
 	public List<DocType> getAllDocType(){
 		return docTypeDAO.getAll();
 	}
 	
 	/* EdIzm */
+	/**
+	 * Get {@link igor.bts.entity.EdIzm} entity instance by ID.
+	 * @param id ID of {@link igor.bts.entity.EdIzm} entity instance 
+	 * @return {@link igor.bts.entity.EdIzm} entity instance of null if not exists
+	 */
 	public EdIzm getEdIzm(Integer id){
 		return edIzmDAO.getById(id);
 	}
 	
+	/**
+	 * Get all of {@link igor.bts.entity.EdIzm} entity instances.
+	 * @return List of all {@link igor.bts.entity.EdIzm} entity instances
+	 * @throws CRUDEntityException
+	 */
 	public List<EdIzm> getAllEdIzm(){
 		return edIzmDAO.getAll();
 	}
 	
 	/* TpInternet */
+	/** 
+	 * Get {@link igor.bts.entity.TpInternet} entity instance by ID.
+	 * @param id ID of {@link igor.bts.entity.TpInternet} entity instance
+	 * @return {@link igor.bts.entity.TpInternet} entity instance or null if not exists
+	 */
 	public TpInternet getTpInternt(Integer id){
 		return tpInternetDAO.getById(id);
 	}
 	
+	/**
+	 * Get all of {@link igor.bts.entity.TpInternet} entity instances.
+	 * @return List of all {@link igor.bts.entity.TpInternet} entity instances
+	 * @throws CRUDEntityException
+	 */
 	public List<TpInternet> getAllTpInternet(){
 		return tpInternetDAO.getAll();
 	}
 	
 	/* Client */
+	/**
+	 * Create {@link igor.bts.entity.Client} entity instance
+	 * @param client {@link igor.bts.entity.Client} POJO object
+	 * @return created {@link igor.bts.entity.Client} entity instance
+	 * @throws IllegalArgumentException
+	 * @throws CRUDEntityException
+	 */
 	public Client createClient(Client client){
 		return clientDAO.create(client);
 	}
 	
+	/** 
+	 * Merge {@link igor.bts.entity.Client} entity instance to database
+	 * @param client {@link igor.bts.entity.Client} entity instance
+	 * @throws IllegalArgumentException
+	 * @throws CRUDEntityException
+	 */
 	public void updateClient(Client client){
 		clientDAO.update(client);
 	}
 	
-	public void deleteClient(Integer id){
-		clientDAO.delete(id);
+	/**
+	 * Remove an {@link igor.bts.entity.Client} entity instance by ID.
+	 * @param id ID of {@link igor.bts.entity.Client} entity instance
+	 * @return true if the removing was successful
+	 * @throws CRUDEntityException
+	 */
+	public boolean deleteClient(Integer id){
+		return clientDAO.delete(id);
 	}
 	
+	/**
+	 * Get {@link igor.bts.entity.Client} entity instance by ID.
+	 * @param id ID of {@link igor.bts.entity.Client} entiy instance
+	 * @return {@link igor.bts.entity.Client} entity instance or null if not exists
+	 */
 	public Client getClient(Integer id){
 		return clientDAO.getById(id);
 	}
 	
+	/**
+	 * Get all of {@link igor.bts.entity.Client} entity instances.
+	 * @return List of all {@link igor.bts.entity.Client} entity instances
+	 * @throws CRUDEntityException
+	 */
 	public List<Client> getAllClient(){
 		return clientDAO.getAll();
 	}
 	
 	/* Dogovor */
+	/**
+	 * Create {@link igor.bts.entity.Dogovor} entity instance.
+	 * @param dogovor {@link igor.bts.entity.Dogovor} POJO object
+	 * @return created {@link igor.bts.entity.Dogovor} entity instance 
+	 * @throws IllegalArgumentException
+	 * @throws CRUDEntityException
+	 */
 	public Dogovor createDogovor(Dogovor dogovor){
 		return dogovorDAO.create(dogovor);
 	}
 	
+	/**
+	 * Merge {@link igor.bts.entity.Dogovor} entity instance to database
+	 * @param dogovor {@link igor.bts.entity.Dogovor} entity instance
+	 * @throws IllegalArgumentException
+	 * @throws CRUDEntityException
+	 */
 	public void updateDogovor(Dogovor dogovor){
 		dogovorDAO.update(dogovor);
 	}
 	
-	public void deleteDogovor(Integer id){
-		dogovorDAO.delete(id);
+	/**
+	 * Remove {@link igor.bts.entity.Dogovor} entity instance by ID.
+	 * @param id ID of {@link igor.bts.entity.Dogovor} entity instance
+	 * @return true if the removing was successful
+	 * @throws CRUDEntityException
+	 */
+	public boolean deleteDogovor(Integer id){
+		return dogovorDAO.delete(id);
 	}
 	
+	/**
+	 * Get {@link igor.bts.entity.Dogovor} entity instance by ID.
+	 * @param id ID of {@link igor.bts.entity.Dogovor} entity instance
+	 * @return {@link igor.bts.entity.Dogovor} entity instance or null if nots exists
+	 */
 	public Dogovor getDogovor(Integer id){
 		return dogovorDAO.getById(id);
 	}
 	
+	/**
+	 * Get all of {@link igor.bts.entity.Dogovor} entity instances.
+	 * @return List of all {@link igor.bts.entity.Dogovor} entity instances 
+	 * @throws CRUDEntityException
+	 */
 	public List<Dogovor> getAllDogovor(){
 		return dogovorDAO.getAll();
 	}
 	
 	/* Bz */
+	/**
+	 * Create {@link igor.bts.entity.BZ} entity instance.
+	 * @param bz {@link igor.bts.entity.BZ} POJO object
+	 * @return {@link igor.bts.entity.BZ} entity instance
+	 * @throws IllegalArgumentException
+	 * @throws CRUDEntityException
+	 */
 	public BZ createBZ(BZ bz){
 		return bzDAO.create(bz);
 	}
 	
+	/**
+	 * Merge {@link igor.bts.entity.BZ} entity instance to database.
+	 * @param bz {@link igor.bts.entity.BZ} entity instance
+	 * @throws IllegalArgumentException
+	 * @throws CRUDEntityException
+	 */
 	public void updateBZ(BZ bz){
 		bzDAO.update(bz);
 	}
 	
-	public void deleteBZ(Integer id){
-		bzDAO.delete(id);
+	/**
+	 * Remove {@link igor.bts.entity.BZ} entity instance by ID
+	 * @param id IF of {@link igor.bts.entity.BZ} entity instance
+	 * @return true if the removing was successful
+	 * @throws CRUDEntityException
+	 */
+	public boolean deleteBZ(Integer id){
+		return bzDAO.delete(id);
 	}
 	
+	/**
+	 * Get {@link igor.bts.entity.BZ} entity instance by ID.
+	 * @param id ID of {@link igor.bts.entity.BZ} entity instance
+	 * @return {@link igor.bts.entity.BZ} entity instance or null if not exists
+	 */
 	public BZ getBZ(Integer id){
 		return bzDAO.getById(id);
 	}
 	
+	/**
+	 * Get all of {@link igor.bts.entity.BZ} entity instances.
+	 * @return List of all {@link igor.bts.entity.BZ} entity instances
+	 * @throws CRUDEntityException
+	 */
 	public List<BZ> getAllBZ(){
 		return bzDAO.getAll();
 	}
 	
 	
 	/* Service */
+	/**
+	 * Create {@link igor.bts.entity.Service} entity instance
+	 * @param service {@link igor.bts.entity.Service} POJO object
+	 * @return {@link igor.bts.entity.Service} entity instance
+	 * @throws IllegalArgumentException
+	 * @throws CRUDEntityException
+	 */
 	public Service createService(Service service){
 		return serviceDAO.create(service);
 	}
 	
+	/**
+	 * Merge {@link igor.bts.entity.Service} entity instance to database.
+	 * @param service {@link igor.bts.entity.Service} entity instance
+	 * @throws IllegalArgumentException
+	 * @throws CRUDENtityException
+	 */
 	public void updateService(Service service){
 		serviceDAO.update(service);
 	}
 	
-	public void deleteService(Integer id){
-		serviceDAO.delete(id);
+	/**
+	 * Remove {@link igor.bts.entity.Service} entity instance by ID.
+	 * @param id ID of {@link igor.bts.entity.Service} entiy instance
+	 * @return true if the removing was successful
+	 * @throws CRUDEntityException
+	 */
+	public boolean deleteService(Integer id){
+		return serviceDAO.delete(id);
 	}
 	
+	/** 
+	 * Get {@link igor.bts.entity.Service} entity instance by ID.
+	 * @param id ID of {@link igor.bts.entity.Service} entity instance
+	 * @return {@link igor.bts.entity.Service} entity instace ot null if not exists
+	 */
 	public Service getService(Integer id){
 		return serviceDAO.getById(id);
 	}
 	
+	/**
+	 * Get all of {@link igor.bts.entity.Service} entity instances.
+	 * @return List of all {@link igor.bts.entity.Service} entity instances
+	 * @throws CRUDEnttiyException
+	 */
 	public List<Service> getAllService(){
 		return serviceDAO.getAll();
 	}

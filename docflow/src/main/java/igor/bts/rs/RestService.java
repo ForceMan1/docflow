@@ -92,7 +92,7 @@ public class RestService {
 		if(docTypes == null || docTypes.size() ==0)
 			throw new NotFoundException();
 		DocTypeList list = new DocTypeList();
-		list.setDocType(docTypes);
+		list.setDocTypes(docTypes);
 		return Response.ok(list).build();
 	}
 	
@@ -341,7 +341,7 @@ public class RestService {
 	@Path("service")
 	@GET
 	@Produces(MediaType.APPLICATION_XML)
-	public Response getAllServuice(){
+	public Response getAllService(){
 		List<Service> services = facade.getAllService();
 		if(services == null || services.size() == 0)
 			throw new NotFoundException();

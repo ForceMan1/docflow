@@ -5,9 +5,9 @@ import igor.bts.entity.Service;
 import java.util.List;
 
 public interface ICommonDAO<T> {
-	public T create(T t);
-	public void delete(Integer id);
-	public void update(T t);
-	public T getById(Integer id);
-	public List<T> getAll();
+	abstract public T create(T t);
+	abstract public boolean delete(Integer id);
+	abstract public T update(T t);
+	abstract public T getById(Integer id);
+	abstract public List<T> getAll();
 }

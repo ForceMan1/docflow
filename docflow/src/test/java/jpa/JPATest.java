@@ -48,6 +48,7 @@ public class JPATest {
 	private static ValidatorFactory vf = Validation.buildDefaultValidatorFactory();
 	private static Validator validator;
 	
+	
 	@BeforeClass
 	public static void initEntityManager() throws Exception {
 		em = emf.createEntityManager();

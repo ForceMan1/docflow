@@ -27,12 +27,21 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+/**
+ * 
+ * @author Igor
+ * Entity Type Service. Using in {@link igor.bts.entity.BZ}.
+ *
+ */
 @XmlRootElement(name="service")
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
 @Access(AccessType.PROPERTY)
 @NamedQuery(name=Service.ALL_SERVICE, query = "SELECT s from Service s")
 public class Service {
+	/**
+	 * String const for a Named Query.
+	 */
 	@XmlTransient
 	public static final String ALL_SERVICE = "ALL_SERVICE";
 	private Integer id;
@@ -63,102 +72,202 @@ public class Service {
 	}
 	
 	/****** Setters & Getters ****************/
+	/**
+	 * Get a primary key.
+	 * @return primary key
+	 */
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	public Integer getId() {
 		return id;
 	}
+	
+	/**
+	 * Set a primary key.
+	 * @param id primary key
+	 */
 	public void setId(Integer id) {
 		this.id = id;
 	}
 	
+	/**
+	 * Get a service's type 
+	 * @return service's type
+	 */
 	@NotNull
 	@OneToOne(cascade = CascadeType.MERGE, optional = false)
 	@JoinColumn(nullable=false)
 	public DocType getType() {
 		return type;
 	}
+	
+	/**
+	 * Set a service's type. Not nullable.
+	 * @param docType service's type
+	 */
 	public void setType(DocType docType) {
 		this.type = docType;
 	}
 	
+	/**
+	 * Get kind of the service: periodic or not.
+	 * @return kinf of the service
+	 */
 	@NotNull
 	@Column(nullable=false)
 	public Boolean getIs_periodic() {
 		return is_periodic;
 	}
+	
+	/**
+	 * Set kind of the service: periodic or not. Not Nullable.
+	 * @param is_periodic kind of the service
+	 */
 	public void setIs_periodic(Boolean is_periodic) {
 		this.is_periodic = is_periodic;
 	}
 	
+	/**
+	 * Get a {@link igor.bts.entity.EdIzm} edIzm
+	 * @return {@link igor.bts.entity.EdIzm} edIzm
+	 */
 	@NotNull
 	@OneToOne(cascade = CascadeType.MERGE, optional = false)
 	@JoinColumn(nullable=false)
 	public EdIzm getEdIzm() {
 		return edIzm;
 	}
+	
+	/**
+	 * Set a {@link igor.bts.entity.EdIzm} edIzm. Not nullable.
+	 * @param edIzm {@link igor.bts.entity.EdIzm} edIzm
+	 */
 	public void setEdIzm(EdIzm edIzm) {
 		this.edIzm = edIzm;
 	}
 	
+	/**
+	 * Get service's cost
+	 * @return a service's cost.
+	 */
 	@NotNull @Digits(integer = 14, fraction = 4)
 	@Column(nullable = false, precision = 14, scale = 4)
 	public BigDecimal getCost() {
 		return cost;
 	}
+	
+	/**
+	 * Set a service's cost. Not nullable. precision = 14, scale = 4.  
+	 * @param cost
+	 */
 	public void setCost(BigDecimal cost) {
 		this.cost = cost;
 	}
 	
+	/**
+	 * Get a service' kol.
+	 * @return service's kol
+	 */
 	@NotNull @Digits(integer = 14, fraction = 4)
 	@Column(nullable = false, precision = 14, scale = 4)
 	public BigDecimal getKol() {
 		return kol;
 	}
+	
+	/**
+	 * Set a service's kol. Not nullable. precision = 14, scale = 4.
+	 * @param kol service's kol
+	 */
 	public void setKol(BigDecimal kol) {
 		this.kol = kol;
 	}
 	
-	@Digits(integer = 14, fraction = 4)
+	/**
+	 * Get a service's sum
+	 * @return service's sum
+	 */
+	
+	@NotNull @Digits(integer = 14, fraction = 4)
 	@Column(nullable = false, precision = 14, scale = 4)
 	public BigDecimal getStoimost() {
 		return stoimost;
 	}
+	
+	/**
+	 * Set a service's sum. Not nullable. precision = 14, scale = 4. 
+	 * @param stoimost service's sum
+	 */
 	public void setStoimost(BigDecimal stoimost) {
 		this.stoimost = stoimost;
 	}
 	
+	/**
+	 * Get {@link igor.bts.entity.TpInternet} tariff of Internet
+	 * @return {@link igor.bts.entity.TpInternet} tariff of Internet
+	 */
 	@OneToOne(cascade = CascadeType.MERGE, optional=true)
 	@JoinColumn(name="tp_jfk", nullable=true)
 	public TpInternet getTpInternet() {
 		return tpInternet;
 	}
+	
+	/**
+	 * Set {@link igor.bts.entity.TpInternet} Tariff of Internet
+	 * @param tpInternet {@link igor.bts.entity.TpInternet} Tarif of Internet
+	 */
 	public void setTpInternet(TpInternet tpInternet) {
 		this.tpInternet = tpInternet;
 	}
 	
+	/**
+	 * Get an additional info
+	 * @return additional info
+	 */
 	@Size(max = 128)
 	@Column(length = 128)
 	public String getInfo() {
 		return info;
 	}
+	
+	/**
+	 * Set an additional info. Max size = 128.
+	 * @param info additional info
+	 */
 	public void setInfo(String info) {
 		this.info = info;
 	}
 	
+	/**
+	 * Get an list of billing's ids
+	 * @return list of billing's ids
+	 */
 	@ElementCollection
 	@CollectionTable(name = "ids_billing")
 	public Set<Integer> getIds_billing() {
 		return ids_billing;
 	}
+	
+	/**
+	 * Set an list of billing's ids
+	 * @param ids_billing list of billing's ids
+	 */
 	public void setIds_billing(Set<Integer> ids_billing) {
 		this.ids_billing = ids_billing;
 	}
 	
+	/**
+	 * Get a {@link igor.bts.entity.BZ} blank zakaza of this service.
+	 * @return {@link igor.bts.entity.BZ} blank zakaza of this service.
+	 */
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name="bz_jfk")
 	public BZ getBz() {
 		return bz;
 	}
+	
+	/**
+	 * Set a {@link igor.bts.entity.BZ} blank zakaza of this service.
+	 * @param bz {@link igor.bts.entity.BZ} blank zakaza of this service.
+	 */
 	public void setBz(BZ bz) {
 		this.bz = bz;
 	}

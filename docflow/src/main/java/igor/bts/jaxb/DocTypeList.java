@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
-
+/*
 @XmlRootElement
 @XmlSeeAlso(DocType.class)
 public class DocTypeList {
@@ -22,13 +22,13 @@ public class DocTypeList {
 		return docTypes;
 	}
 	
-	public void setDocType(List<DocType> docTypes){
+	public void setDocTypes(List<DocType> docTypes){
 		this.docTypes = docTypes;
 	}
 }
+*/
 
 
-/*
 @XmlRootElement(name = "doctypes")
 @XmlSeeAlso(DocType.class)
 public class DocTypeList extends ArrayList<DocType> {
@@ -48,4 +48,3 @@ public class DocTypeList extends ArrayList<DocType> {
 		this.addAll(docTypes);
 	}
 }
-*/
